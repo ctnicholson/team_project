@@ -24,20 +24,20 @@ Although most soccer World Cup APIs are paid, [API-FOOTBALL] (https://www.api-fo
 
 ## Schedule
 
-November 15th
+November 15th:
 Map out the system’s necessary components (major files, the flows of information, initialize APIs to collect data)
 
-November 19th
+November 19th:
 Filter out necessary API data to feed the point-allocation algorithm
 
-November 24th
+November 24th:
 Develop a point allocation algorithm
 
-November 29th
+November 29th:
 Create frontend assuming a one-player system
 
 
-December 4th
+December 4th:
 Enhance frontend to enable multiplayer-functionality
 
 
