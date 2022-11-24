@@ -1,5 +1,9 @@
 # World Cup Prediction Game
 
+## Team Members
+
+Maria Herwagen, Callum Nicholson, Benjamin Funk
+
 ## Idea
 
 We propose building a game that enables people to compete against friends in predicting the outcomes of the upcoming world cup matches. It would enable people to join a group session and, for every game, predict a set of key metrics (top scorer, winning team, etc.). 
