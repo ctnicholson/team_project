@@ -31,8 +31,6 @@ def get_scores():
 goals_list = get_scores()
 goals_dict = dict(enumerate(goals_list))
 
-dict = {}
-
 def clean_data():
     count = 0
     while count < len(goals_dict.keys()):
@@ -40,9 +38,11 @@ def clean_data():
             element = {tup[0]: tup[1], tup[2]: tup[3]}
             goals_dict[count] = element
             count +=1
+            
     return goals_dict
+ 
 
-print(clean_data())
+
 
 
 
