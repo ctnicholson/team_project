@@ -15,3 +15,7 @@ def choose_team(name):
             
            
 print(choose_team("Senegal"))
+
+# Database stores list of dictionaries of User's bets
+
+# Function that extracts score predictions from each data structure and compares them --> outputs how many points user gets
