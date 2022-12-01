@@ -1,5 +1,6 @@
 import data_reader
-
+import pymongo
+from app import client, records
 scores_list = []
 relevant_list = []
 
@@ -14,8 +15,31 @@ def choose_team(name):
     return relevant_list
             
            
-print(choose_team("Senegal"))
+# print(choose_team("Senegal"))
+ 
+ 
+
+for x in records.find():
+  print(x)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Database stores list of dictionaries of User's bets
 
+# User login authentication
+
 # Function that extracts score predictions from each data structure and compares them --> outputs how many points user gets
+
+# Flask functionality
+
