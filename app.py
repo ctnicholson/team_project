@@ -10,13 +10,13 @@ records = db.register
 
 @app.route("/", methods=['post', 'get'])
 def landing():
-    if request.method == 'POST':
-        if request.form['submit_button'] == 'login':
-            return render_template('login.html')
-        elif request.form['submit_button'] == 'registration':
-            return render_template('index.html')
-    elif request.method == 'GET':
+    if request.method == 'GET':
         return render_template('landing.html')
+    elif request.method == 'POST':
+        if request.form['submit_button'] == 'login':
+            return redirect(url_for("logged_in"))
+        elif request.form['submit_button'] == 'registration':
+            return redirect(url_for("index"))
 
 
 @app.route("/registration", methods=['post', 'get'])
