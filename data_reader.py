@@ -1,22 +1,28 @@
 import http.client
 import json
 
-conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+def get_data():
 
-headers = {
-    'x-rapidapi-host': "v3.football.api-sports.io",
-    'x-rapidapi-key': "95545dabcc3cfa791d8e0f5198ff71b1"
-    }
+    conn = http.client.HTTPSConnection("v3.football.api-sports.io")
 
-conn.request("GET", "/fixtures/?league=1&season=2022", headers=headers)
-res = conn.getresponse()
-data = res.read()
-response_text = data.decode("utf-8")
-response_data = json.loads(response_text)
+    headers = {
+        'x-rapidapi-host': "v3.football.api-sports.io",
+        'x-rapidapi-key': "95545dabcc3cfa791d8e0f5198ff71b1"
+        }
 
-scores = []
+    conn.request("GET", "/fixtures/?league=1&season=2022", headers=headers)
+    res = conn.getresponse()
+    data = res.read()
+    response_text = data.decode("utf-8")
+    response_data = json.loads(response_text)
+    return response_data
+
+
+
 
 def get_scores():
+    response_data = get_data()
+    scores = []
     fixture = 0
     while fixture < len(response_data["response"]):
         home_team = response_data["response"][fixture]["teams"]["home"]["name"]
