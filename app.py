@@ -16,11 +16,11 @@ def landing():
         if request.form['submit_button'] == 'login':
             return redirect(url_for("logged_in"))
         elif request.form['submit_button'] == 'registration':
-            return redirect(url_for("index"))
+            return redirect(url_for("registration"))
 
 
 @app.route("/registration", methods=['post', 'get'])
-def index():
+def registration():
     message = ''
     if "email" in session:
         return redirect(url_for("logged_in"))
@@ -35,13 +35,13 @@ def index():
         email_found = records.find_one({"email": email})
         if user_found:
             message = 'There already is a user by that name'
-            return render_template('index.html', message=message)
+            return render_template('registration.html', message=message)
         if email_found:
             message = 'This email already exists in database'
-            return render_template('index.html', message=message)
+            return render_template('registration.html', message=message)
         if password1 != password2:
             message = 'Passwords should match!'
-            return render_template('index.html', message=message)
+            return render_template('registration.html', message=message)
         else:
             user_input = {'name': user, 'email': email, 'password': password2}
             records.insert_one(user_input)
@@ -50,7 +50,7 @@ def index():
             new_email = user_data['email']
    
             return render_template('logged_in.html', email=new_email)
-    return render_template('index.html')
+    return render_template('registration.html')
 
 @app.route("/logged_in")
 def logged_in():
@@ -95,7 +95,7 @@ def logout():
         session.pop("email", None)
         return render_template("signout.html")
     else:
-        return render_template('index.html')
+        return render_template('registrations.html')
 
 
 
