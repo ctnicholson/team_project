@@ -2,11 +2,6 @@ from data_reader import get_data
 from game_logic import choose_team
 
 
-# user_team_2 = input("input team 2 >>> ")
-# result = input("will team 1 win or lose? >>> ").lower()
-# score_1 = input("how many points will team 1 end up with? >>> ")
-# score_2 = input("how many points will team 2 end up with? >>> ")
-
 def get_team_1():
     team = input("input team 1 >>> ")
     user_team_1 = ' '.join(x.capitalize() for x in team.split())
@@ -83,7 +78,7 @@ def get_winner():
 def get_penalties():
     real_game, pred_game, real_winner, pred_winner = get_winner()
     team_1, team_2 = real_game.keys()
-    if real_game[team_1] == real_game[team_2]:
+    if real_game[team_1] == real_game[team_2] and real_game[team_1] != None and real_game[team_2] != None:
         penalties = True
     else:
         penalties = False
@@ -100,7 +95,7 @@ def compare_scores():
         points += 1
     if pred_winner == real_winner:
         points += 1
-    return points
+    return real_game, pred_game, real_winner, pred_winner, penalties, points
 
 
 # print(create_score_dict())
