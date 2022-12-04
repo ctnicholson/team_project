@@ -18,8 +18,6 @@ def get_data():
     return response_data
 
 
-
-
 def get_scores():
     response_data = get_data()
     scores = []
@@ -36,20 +34,44 @@ def get_scores():
 
 goals_list = get_scores()
 goals_dict = dict(enumerate(goals_list))
+data = []
 
 def clean_data():
-    count = 0
-    while count < len(goals_dict.keys()):
-        for tup in goals_dict.values():
-            element = {tup[0]: tup[1], tup[2]: tup[3]}
-            goals_dict[count] = element
-            count +=1
-            
-    return goals_dict
+    # Use the get_scores function to get the raw data
+    raw_data = get_scores()
+
+    # Initialize an empty list to store the clean data
+    clean_data = []
+
+    # Iterate over the items in the raw data
+    for item in raw_data:
+        item_array = []
+
+        # Access the values in the tuple by their index, rather than by their key
+        home_team_name = item[0]
+        away_team_name = item[2]
+
+        # Add the team names and scores to the item_array
+        item_array.append(home_team_name)
+        item_array.append(away_team_name)
+        item_array.append((item[1], item[3]))
+
+        # Append the item_array to the clean_data list
+        clean_data.append(item_array)
+
+    return clean_data
+
+
+
+
+
+
+
+print(clean_data())
+
+
+
+
+
+
  
-
-
-
-
-
-    

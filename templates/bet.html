@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>World Cup Fixtures</title>
+    <style>
+      /* define CSS styles for formatting the table */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      thead {
+        font-weight: bold;
+      }
+      td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>World Cup Fixtures</h1>
+    <table>
+      <thead>
+        <th>Match</th>
+        <th>Team 1</th>
+        <th>Team 2</th>
+        <th>Score</th>
+      </thead>
+      <tbody>
+        <script>
+          // Import the data_reader module
+          import data_reader
+
+          // Get the clean data using the clean_data function
+          data = data_reader.clean_data()
+          
+            for item in data:
+                document.write('<tr>')
+                document.write('<td>' + item[0] + '</td>')
+                document.write('<td>' + item[1] + '</td>')
+                document.write('<td>' + item[2] + '</td>')
+                document.write('<td>' + item[3][0] + ' - ' + item[3][1] + '</td>')
+                document.write('</tr>')
+
+        </script>
+      </tbody>
+    </table>
+  </body>
+</html>
+

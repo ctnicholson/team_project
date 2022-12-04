@@ -23,7 +23,7 @@ def landing():
 def registration():
     message = ''
     if "email" in session:
-        return redirect(url_for("logged_in"))
+        return redirect(url_for("bet"))
     if request.method == "POST":
         user = request.form.get("fullname")
         email = request.form.get("email")
@@ -56,7 +56,7 @@ def registration():
 def logged_in():
     if "email" in session:
         email = session["email"]
-        return render_template('logged_in.html', email=email)
+        return redirect(url_for("bet"))
     else:
         return redirect(url_for("login"))
     
@@ -64,7 +64,7 @@ def logged_in():
 def login():
     message = 'Please login to your account'
     if "email" in session:
-        return redirect(url_for("logged_in"))
+        return redirect(url_for("bet"))
 
     if request.method == "POST":
         email = request.form.get("email")
@@ -78,10 +78,9 @@ def login():
             
             if password == passwordcheck:
                 session["email"] = email_val
-                return redirect(url_for('logged_in'))
             else:
                 if "email" in session:
-                    return redirect(url_for("logged_in"))
+                    return redirect(url_for("bet"))
                 message = 'Wrong password'
                 return render_template('login.html', message=message)
         else:
@@ -98,8 +97,18 @@ def logout():
         return render_template('registrations.html')
 
 
-
+@app.route("/bet", methods=['post', 'get'])
+def bet():
+    if request.method == 'GET':
+        return render_template('bet.html')
+    
+    
+    # home_team_guess = request.form.get("Guess Score1")
+    # away_team_guess = request.form.get("Guess Score2")
+    # user_guess = {'home goals': home_team_guess, 'away goals': away_team_guess}
+    # records.insert_one(user_guess)
 
 #end of code to run it
 if __name__ == "__main__":
   app.run(debug=True)
+

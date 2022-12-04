@@ -42,4 +42,3 @@ for x in records.find():
 # Function that extracts score predictions from each data structure and compares them --> outputs how many points user gets
 
 # Flask functionality
-
