@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Football Prediction Game</title>
+  <style>
+    /* CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .bet-form {
+      width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .bet-form h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .bet-form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .bet-form input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 3px;
+    }
+
+    .bet-form input[type="submit"] {
+      width: 100%;
+      padding: 8px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: 0;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="bet-form">
+    <h1>Make a bet</h1>
+    <form id="bet-form" action="/choose_bet" method="POST">
+      <label for="home-team">Home team:</label>
+      <input type="text" id="home-team" name="home-team" value="{{ home_team }}" required>
+      <label for="away-team">Away team:</label>
+      <input type="text" id="away-team" name="away-team" value="{{ away_team }}" required>
+      <label for="home-score">Home score:</label>
+      <input type="text" id="home-score" name="home-score" value="{{ home_score }}" required>
+      <label for="away-score">Away score:</label>
+      <input type="text" id="away-score" name="away-score" value="{{ away_score }}" required>
+      <input type="submit" value="Submit bet">
+    </form>
+  </div>
+</body>
+
+
+
