@@ -1,7 +1,7 @@
 # Define a class to represent a player on the leaderboard
 class Player:
     """Defined a class to represent a player on the leader board, as this gets developed will make this pull from all users who have bet"""
-    def __init__(self, name, predictions):
+    def _init_(self, name, predictions):
         self.name = name
         self.predictions = predictions
         self.score = 0

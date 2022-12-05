@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import data_reader
 import bcrypt
+import scoring
+import leaderboard
 
 app = Flask(__name__)
 app.secret_key = "testing"
@@ -187,6 +189,45 @@ def choose_bet():
   # Return the HTML for the form
   return form
     
+    
+    
+@app.route("/leaderboard", methods=['GET'])
+def leaderboard_page(): 
+    if request.method == 'GET':
+        result = [] 
+        # Initialize the leaderboard
+        players = []
+        leaderboard = {}
+
+        for res in records.find():
+            # Add player into leaderboard
+            player_name = res['name']
+            player_email = res['email']
+            player_bet = None
+            if 'bet' in res.keys():
+                player_bet = res['bet']
+
+            players.append({
+                "name": player_name,
+                "email": player_email,
+                "bets": player_bet
+            })
+        
+        print(players)
+
+        # Run Scoring
+
+        for player in players:
+            player_score = scoring.get_scores(player['bets'])
+            leaderboard[player['name']] = player_score
+
+            pass
+        
+        # NOW THAT I HAVE TOTAL POINTS FOR USERS, I NEED TO SORT THEM
+        sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
+
+
+        return render_template('leaderboard.html', res=sorted_leaderboard, user_session=session['email'])
 
 #end of code to run it
 if __name__ == "__main__":
