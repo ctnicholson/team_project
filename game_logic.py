@@ -1,13 +1,13 @@
 import data_reader
 import pymongo
-from app import client, records
+from app import records
 scores_list = []
 relevant_list = []
 
 def choose_team(name):
     count = 0
     cleaned_score_dict = data_reader.clean_data()
-    for i in cleaned_score_dict.values():
+    for i in cleaned_score_dict:
         scores_list.append(i)
     for x in scores_list:
         if name in x:

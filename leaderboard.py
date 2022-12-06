@@ -40,4 +40,4 @@ def display_leaderboard():
         print("-" * 20)
 
 # Test Code
-add_player("Alice", {"game1": (3, 1), "game2": (0, 0), "game3": (2, 2)})
+# add_player("Alice", {"game1": (3, 1), "game2": (0, 0), "game3": (2, 2)})

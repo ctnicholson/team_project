@@ -1,5 +1,5 @@
 from data_reader import get_data
-from game_logic import choose_team
+# from game_logic import choose_team
 
 """
     {'_id': ObjectId('638d43a372ca0bb8d4a800a6'), 
@@ -9,34 +9,52 @@ from game_logic import choose_team
             {'home_team': 'Korea', 'away_team': 'US', 'home_score': '2', 'away_score': '1', 'penalties': 'False'}]}
 """
 
+
 def get_scores(bets):
     total_points = 0
 
     for bet in bets:
         # GET PREDICTED
-        pred_home_score, pred_away_score = bet['home_score'], bet['away_score']
-        pred_penalties = bet['penalties'] #(BOOL)
+        pred_home_score, pred_away_score = int(bet['home_score']), int(bet['away_score'])
+        pred_penalties = bet['penalties']
 
         pred_diff = pred_home_score - pred_away_score
 
         # TODO: Get actual scores from API
-        actual_home_score, actual_away_score = None 
-        actual_penalties = None #(BOOL)
+        response_data = get_data()
+        data = response_data["response"]
+        for g in data:
+            home_act = g["teams"]["home"]["name"]
+            away_act = g["teams"]["away"]["name"]
+            if home_act == bet['home_team'] and away_act == bet['away_team']:
+                actual_home_score = g['score']['fulltime']['home']
+                actual_away_score = g['score']['fulltime']['away']
+                break
 
-        home_diff = actual_home_score - actual_away_score
+        act_diff = actual_home_score - actual_away_score
+        if act_diff == 0:
+            actual_penalties = 'True'
+        else:
+            actual_penalties = 'False'
 
         # QUERY FOR PENALITIES
 
         # if there is a draw and penalties are predicted
         if pred_penalties == actual_penalties:
-            points += 1
-        
+            total_points += 1
+
         # got predicted score right
         if pred_away_score == actual_away_score and pred_home_score == actual_home_score:
-            points += 1
-        
-        # got winner right
-        if pred_diff == home_diff:
-            points += 1
+            total_points += 1
 
-    return total_points
+        # got winner right
+        if (pred_diff > 0 and act_diff > 0) or (pred_diff < 0 and act_diff < 0):
+            total_points += 1
+
+    # return total_points
+    return total_points, pred_home_score, pred_away_score, pred_diff, pred_penalties, actual_home_score, actual_away_score, act_diff
+
+
+bets = [{'home_team': 'Japan', 'away_team': 'Croatia',
+         'home_score': '2', 'away_score': '2', 'penalties': 'True'}]
+print(get_scores(bets))
