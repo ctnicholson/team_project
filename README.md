@@ -8,7 +8,7 @@ One day, Zhi Li learns about our World Cup prediction game and decides to give i
 
 Eventually, the World Cup reaches the final stage and he is in 2nd place, incredibly close to the first place position. He is on the edge of his seat as he watches the final match, and his predictions are on the line. He can hardly believe it when his team wins the championship, and is thrilled to see that he has come out on top of the leaderboard in his league with friends and family. 
 
-![Zhi Li celebrating win](https://media.tenor.com/bG9HDCp3fwsAAAAd/conte-spurs.gif)
+![Zhi Li celebrating win](https://media.tenor.com/HAGXdX-X-1cAAAAM/no1-happy.gif)
 
 This is the base repository for our final group project.
 
