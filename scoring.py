@@ -55,6 +55,3 @@ def get_scores(bets):
     return total_points, pred_home_score, pred_away_score, pred_diff, pred_penalties, actual_home_score, actual_away_score, act_diff
 
 
-bets = [{'home_team': 'Japan', 'away_team': 'Croatia',
-         'home_score': '2', 'away_score': '2', 'penalties': 'True'}]
-print(get_scores(bets))

@@ -84,22 +84,24 @@ def logged_in():
 def login():
     message = 'Please login to your account'
     if "email" in session:
-        return redirect(url_for("bet"))
+        return redirect(url_for("logged_in"))
 
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        
+
        
         email_found = records.find_one({"email": email})
         if email_found:
             email_val = email_found['email']
             passwordcheck = email_found['password']
             
-            if password == passwordcheck:
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return redirect(url_for("bet"))
+                return redirect(url_for('logged_in'))
             else:
+                if "email" in session:
+                    return redirect(url_for("logged_in"))
                 message = 'Wrong password'
                 return render_template('login.html', message=message)
         else:
@@ -229,7 +231,6 @@ def leaderboard_page():
 #end of code to run it
 if __name__ == "__main__":
   app.run(debug=True)
-
 
 
 
