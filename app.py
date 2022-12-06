@@ -84,7 +84,7 @@ def logged_in():
 def login():
     message = 'Please login to your account'
     if "email" in session:
-        return redirect(url_for("bet"))
+        return redirect(url_for("logged_in"))
 
     if request.method == "POST":
         email = request.form.get("email")
@@ -96,17 +96,19 @@ def login():
             email_val = email_found['email']
             passwordcheck = email_found['password']
             
-            if password == passwordcheck:
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
+                return redirect(url_for('logged_in'))
             else:
                 if "email" in session:
-                    return redirect(url_for("bet"))
+                    return redirect(url_for("logged_in"))
                 message = 'Wrong password'
                 return render_template('login.html', message=message)
         else:
             message = 'Email not found'
             return render_template('login.html', message=message)
     return render_template('login.html', message=message)
+
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
@@ -147,7 +149,6 @@ def bet():
 @app.route("/choose_bet", methods=['POST', 'GET'])
 def choose_bet():
   if request.method == 'POST':
-    print(request.form)
     # Retrieve the user's bet from the request object
     home_team = request.args.get("home-team")
     away_team = request.args.get("away-team")
@@ -213,7 +214,6 @@ def leaderboard_page():
                 "bets": player_bet
             })
         
-        print(players)
 
         # Run Scoring
 
@@ -226,13 +226,11 @@ def leaderboard_page():
         # NOW THAT I HAVE TOTAL POINTS FOR USERS, I NEED TO SORT THEM
         sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
 
-
         return render_template('leaderboard.html', res=sorted_leaderboard, user_session=session['email'])
 
 #end of code to run it
 if __name__ == "__main__":
   app.run(debug=True)
-
 
 
 
