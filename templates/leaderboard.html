@@ -30,7 +30,20 @@
     {% block content %}{% endblock %}
 
     <!-- Map results to table -->
-    {{res}}
+    <table>
+        <thead>
+          <th>Player</th>
+          <th>Points</th>
+        </thead>
+        <tbody>
+            {% for player in leaderboard %}
+            <tr>
+              <td>{{ player[0] }}</td>
+              <td>{{ player[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 </body>
 
