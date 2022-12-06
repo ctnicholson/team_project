@@ -59,4 +59,3 @@ def clean_data():
 
     return clean_data
 
-print(clean_data())

@@ -84,17 +84,15 @@ def logged_in():
 def login():
     message = 'Please login to your account'
     if "email" in session:
-        print("laskdj")
         return redirect(url_for("bet"))
 
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        print("hi")
+        
        
         email_found = records.find_one({"email": email})
         if email_found:
-            print("hi")
             email_val = email_found['email']
             passwordcheck = email_found['password']
             
@@ -149,7 +147,6 @@ def bet():
 @app.route("/choose_bet", methods=['POST', 'GET'])
 def choose_bet():
   if request.method == 'POST':
-    print(request.form)
     # Retrieve the user's bet from the request object
     home_team = request.args.get("home-team")
     away_team = request.args.get("away-team")
@@ -215,7 +212,6 @@ def leaderboard_page():
                 "bets": player_bet
             })
         
-        print(players)
 
         # Run Scoring
 
