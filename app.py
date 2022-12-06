@@ -84,29 +84,31 @@ def logged_in():
 def login():
     message = 'Please login to your account'
     if "email" in session:
+        print("laskdj")
         return redirect(url_for("bet"))
 
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-
+        print("hi")
        
         email_found = records.find_one({"email": email})
         if email_found:
+            print("hi")
             email_val = email_found['email']
             passwordcheck = email_found['password']
             
             if password == passwordcheck:
                 session["email"] = email_val
+                return redirect(url_for("bet"))
             else:
-                if "email" in session:
-                    return redirect(url_for("bet"))
                 message = 'Wrong password'
                 return render_template('login.html', message=message)
         else:
             message = 'Email not found'
             return render_template('login.html', message=message)
     return render_template('login.html', message=message)
+
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
@@ -225,7 +227,6 @@ def leaderboard_page():
         
         # NOW THAT I HAVE TOTAL POINTS FOR USERS, I NEED TO SORT THEM
         sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
-
 
         return render_template('leaderboard.html', res=sorted_leaderboard, user_session=session['email'])
 
