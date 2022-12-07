@@ -5,6 +5,11 @@ import bcrypt
 import scoring
 import leaderboard
 
+app = Flask(__name__)
+app.secret_key = "testing"
+client = pymongo.MongoClient("mongodb+srv://admin:admin@cluster0.iimjdzh.mongodb.net/test")
+db = client.get_database('total_records')
+records = db.register
 
 @app.route('/update_server', methods=['POST'])
 def webhook():
