@@ -12,7 +12,6 @@ from data_reader import get_data
 
 def get_scores(bet):
     total_points = 0
-    
     if bet == None:
         return total_points
     # GET PREDICTED
@@ -34,29 +33,29 @@ def get_scores(bet):
             actual_home_score = g['score']['fulltime']['home']
             actual_away_score = g['score']['fulltime']['away']
             break
+    if actual_home_score != None and actual_away_score != None:
+        act_diff = actual_home_score - actual_away_score
+        if act_diff == 0:
+            actual_penalties = True
+        else:
+            actual_penalties = False
 
-    act_diff = actual_home_score - actual_away_score
-    if act_diff == 0:
-        actual_penalties = True
-    else:
-        actual_penalties = False
+        # QUERY FOR PENALITIES
 
-    # QUERY FOR PENALITIES
+        # if there is a draw and penalties are predicted
+        if pred_penalties == actual_penalties:
+            total_points += 1
 
-    # if there is a draw and penalties are predicted
-    if pred_penalties == actual_penalties:
-        total_points += 1
+        # got predicted score right
+        if pred_away_score == actual_away_score and pred_home_score == actual_home_score:
+            total_points += 1
 
-    # got predicted score right
-    if pred_away_score == actual_away_score and pred_home_score == actual_home_score:
-        total_points += 1
-
-    # got winner right
-    if (pred_diff > 0 and act_diff > 0) or (pred_diff < 0 and act_diff < 0):
-        total_points += 1
+        # got winner right
+        if (pred_diff > 0 and act_diff > 0) or (pred_diff < 0 and act_diff < 0):
+            total_points += 1
 
 
     # return total_points
-    return total_points, pred_home_score, pred_away_score, pred_diff, pred_penalties, actual_home_score, actual_away_score, act_diff
+    return total_points
 
 
