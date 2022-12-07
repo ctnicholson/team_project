@@ -178,7 +178,7 @@ def choose_bet():
 
         records.update_one({"email": email}, {"$push": {"bet": user_bet}})
 
-    return redirect(url_for('leaderboard_page'))
+    return redirect(url_for('bet'))
 
 
   # Get the home and away teams from the request object
@@ -227,43 +227,6 @@ def leaderboard_page():
     print(sorted_leaderboard)
     return render_template('leaderboard.html', leaderboard=sorted_leaderboard)
                 
-
-    # get scores
-        
-    #  call scoring function here
-    #  return a dictionary of players: points
-    #   render this on the landing page frontend
-
-    # pull scores and populate leaderboard
-
-    
-
-    # for res in records.find():
-    #     # Add player into leaderboard
-    #     player_name = res['name']
-    #     player_email = res['email']
-    #     player_bet = None
-    #     if 'bet' in res.keys():
-    #     player_bet = res['bet']
-
-    #     players.append({
-    #         "name": player_name,
-    #         "email": player_email,
-    #         "bets": player_bet
-    #     })
-        
-
-    #     # Run Scoring
-    #     for player in players:
-    #         player_score = scoring.get_scores(player['bets'])
-    #         leaderboard[player['name']] = player_score
-
-    #         pass
-        
-    #     # NOW THAT I HAVE TOTAL POINTS FOR USERS, I NEED TO SORT THEM
-    #     sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
-
-    #     return render_template('leaderboard.html', res=sorted_leaderboard, user_session=session['email'])
 
 #end of code to run it
 if __name__ == "__main__":
