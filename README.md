@@ -1,4 +1,4 @@
-**Team Members: Maria Herwage, Callum Nicholson, Benjamin Funk**
+**Team Members: Maria Herwagen, Callum Nicholson, Benjamin Funk**
 
 **_Why did we do this?_**
 
@@ -10,7 +10,7 @@ One day, Zhi Li learns about our World Cup prediction game and decides to give i
 
 ![Prediction](https://media.tenor.com/f0lrUDqGWkYAAAAM/the-smurfs-brainy-smurf.gif)
 
-Eventually, the World Cup reaches the final stage and he is in 2nd place, incredibly close to the first place position. He is on the edge of his seat as he watches the final match, and his predictions are on the line. He has bet that Portugall will beat Argentina 2-1, and first place in the league has bet 2-1 for Argentina. In the 92nd minute of the match, Portugal get a penalty... Cristiano Ronaldo stands up to take it. Ronaldo takes a deep breath... the ref blows the whistle... Ronaldo shoots the ball into the top right corner... GOAAAALLLLLL!!! Portugal have won the World Cup and Zhi Li has won his prediction league, and has won bragging rights for the next 4 years in his friend group. He can hardly believe it , and is thrilled to see that he has come out on top of the leaderboard in his league with friends. 
+Eventually, the World Cup reaches the final stage and Zhi Li is in 2nd place, incredibly close to the first place position. He is on the edge of his seat as he watches the final match, and his predictions are on the line. He has bet that Portugall will beat Argentina 2-1, and first place in the league has bet 2-1 for Argentina. In the 92nd minute of the match, Portugal get a penalty... Cristiano Ronaldo stands up to take it. Ronaldo takes a deep breath... the ref blows the whistle... Ronaldo shoots the ball into the top right corner... GOAAAALLLLLL!!! Portugal have won the World Cup and Zhi Li has won his prediction league, and has won bragging rights for the next 4 years in his friend group. He can hardly believe it , and is thrilled to see that he has come out on top of the leaderboard in his league with friends. 
 
 ![Zhi Li celebrating win](https://media.tenor.com/HAGXdX-X-1cAAAAM/no1-happy.gif)
 
@@ -18,9 +18,18 @@ Eventually, the World Cup reaches the final stage and he is in 2nd place, incred
 **_INSTRUCTIONS_**
 
 Here is a quick run through on how you can use our game:
-':globe_with_meridians:' Click link
-':mag_right:' Navigate across sections
 
+:globe_with_meridians: Click the following link: https://worldcup-bets.herokuapp.com/
+
+:white_check_mark: Register or Login (if user has previously registered), which will send you to Upcoming Fixtures page
+
+:soccer: Make bets for the games, by clicking on "Click to bet!"
+
+:lock: Select score you want to lock in for each team and click submit, which will send you back to Upcoming Fixtures page
+
+:mag_right: Use the navigation bar to navigate across sections, such as the leaderboard page
+
+:confetti_ball: In the leaderboard page you can check your score relative to other users
 
 ---
 **_IMPLEMENTATION INFORMATION_**
