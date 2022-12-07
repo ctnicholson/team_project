@@ -23,12 +23,24 @@ Navigate across sections
 ---
 **_IMPLEMENTATION INFORMATION_**
 
-<img width="2026" alt="Flow chart (Community) (3)" src="https://user-images.githubusercontent.com/112514394/206072014-59e0dd9d-be3d-43b2-b378-ba61379078a3.png">
-
 Now, we are sure you are wondering, what is under the hood of the World Cup prediction game. How does the code really work?
 
+Here is a diagram to help with our explanation
 
+<img width="2026" alt="Flow chart (Community) (4)" src="https://user-images.githubusercontent.com/112514394/206074976-f4bb6a9d-6c8b-4513-8c72-eb948f7de8eb.png">
 
+* First we pull the data from our World Cup API (api-sports.io)
+* Once this data is pulled, it is processed under the data_reader file. This file cleans the data, and returns teams & scores (None) of games not played yet
+* Then bet.html loads this information into the table, and gives the user the ability to bet on the game
+* Through app.py and registration.html, the user is able to register or login
+* The user registers and uses the form to store username and password, which is then encrypted
+* Once the user logs in, this automatically loads the bets page (bet.html)
+* From bet.html we go to the choose_bet.html which takes in the core predictions 
+* These user bets are then appended to MongoDB
+* Then, the scoring.py file compares the bets to the real-time updated scores 
+* Scoring.py returns each player's points
+* Scoring.py sends the player names and points to the leaderboard
+* The leaderboard renders a table of players and points
 
 ---
 **_PROJECT EVOLUTION_**
