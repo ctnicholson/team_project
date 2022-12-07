@@ -4,6 +4,7 @@ import data_reader
 import bcrypt
 import scoring
 import leaderboard
+import collections.abc
 
 app = Flask(__name__)
 app.secret_key = "testing"
@@ -29,9 +30,9 @@ def landing():
     if request.method == 'GET':
         return render_template('landing.html')
     elif request.method == 'POST':
-        if request.form['submit_button'] == 'login':
+        if request.form['submit_button'] == 'Login':
             return redirect(url_for("logged_in"))
-        elif request.form['submit_button'] == 'registration':
+        elif request.form['submit_button'] == 'Register':
             return redirect(url_for("registration"))
 
 
@@ -62,7 +63,7 @@ def registration():
             message = 'Passwords should match!'
             return render_template('registration.html', message=message)
         else:
-            user_input = {'name': user, 'email': email, 'password': hashed_password}
+            user_input = {'name': user, 'email': email, 'password': hashed_password, 'bet': []}
             records.insert_one(user_input)
             
             user_data = records.find_one({"email": email})
@@ -150,8 +151,8 @@ def bet():
 def choose_bet():
   if request.method == 'POST':
     # Retrieve the user's bet from the request object
-    home_team = request.args.get("home-team")
-    away_team = request.args.get("away-team")
+    home_team = request.form.get("home-team")
+    away_team = request.form.get("away-team")
     home_score = request.form.get("home-score")
     away_score = request.form.get("away-score")
 
@@ -165,9 +166,9 @@ def choose_bet():
     if "email" in session:
         email = session["email"]
 
-        records.update_one({"email": email}, {"$set": {"bet": user_bet}})
+        records.update_one({"email": email}, {"$push": {"bet": user_bet}})
 
-    return redirect(url_for('choose_bet'))
+    return redirect(url_for('leaderboard_page'))
 
 
   # Get the home and away teams from the request object
@@ -194,39 +195,65 @@ def choose_bet():
     
 @app.route("/leaderboard", methods=['GET'])
 def leaderboard_page(): 
+    
+    leaderboard = {}
+    
     if request.method == 'GET':
-        result = [] 
-        # Initialize the leaderboard
-        players = []
-        leaderboard = {}
 
-        for res in records.find():
-            # Add player into leaderboard
-            player_name = res['name']
-            player_email = res['email']
-            player_bet = None
-            if 'bet' in res.keys():
-                player_bet = res['bet']
+        client = pymongo.MongoClient("mongodb+srv://admin:admin@cluster0.iimjdzh.mongodb.net/test")
+        db = client.get_database('total_records')
+        records = db.register
 
-            players.append({
-                "name": player_name,
-                "email": player_email,
-                "bets": player_bet
-            })
-        
-
-        # Run Scoring
-
-        for player in players:
-            player_score = scoring.get_scores(player['bets'])
-            leaderboard[player['name']] = player_score
-
-            pass
-        
-        # NOW THAT I HAVE TOTAL POINTS FOR USERS, I NEED TO SORT THEM
+        user_records = records.find()
+        for user in user_records:
+            if user and 'bet' in user.keys() and isinstance(user['bet'], collections.abc.Sequence):
+                for b in (user['bet']):
+                    if user['name'] in leaderboard.keys():
+                        leaderboard[user['name']] += scoring.get_scores(b)
+                    else:
+                        leaderboard[user['name']] = scoring.get_scores(b)
         sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
+        
+    print(sorted_leaderboard)
+    return render_template('leaderboard.html', leaderboard=sorted_leaderboard)
+                
 
-        return render_template('leaderboard.html', res=sorted_leaderboard, user_session=session['email'])
+    # get scores
+        
+    #  call scoring function here
+    #  return a dictionary of players: points
+    #   render this on the landing page frontend
+
+    # pull scores and populate leaderboard
+
+    
+
+    # for res in records.find():
+    #     # Add player into leaderboard
+    #     player_name = res['name']
+    #     player_email = res['email']
+    #     player_bet = None
+    #     if 'bet' in res.keys():
+    #     player_bet = res['bet']
+
+    #     players.append({
+    #         "name": player_name,
+    #         "email": player_email,
+    #         "bets": player_bet
+    #     })
+        
+
+    #     # Run Scoring
+    #     for player in players:
+    #         player_score = scoring.get_scores(player['bets'])
+    #         leaderboard[player['name']] = player_score
+
+    #         pass
+        
+    #     # NOW THAT I HAVE TOTAL POINTS FOR USERS, I NEED TO SORT THEM
+    #     sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
+
+    #     return render_template('leaderboard.html', res=sorted_leaderboard, user_session=session['email'])
 
 #end of code to run it
 if __name__ == "__main__":

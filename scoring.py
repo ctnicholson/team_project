@@ -1,4 +1,7 @@
 from data_reader import get_data
+import pymongo
+import collections.abc
+
 # from game_logic import choose_team
 
 # """
@@ -8,7 +11,6 @@ from data_reader import get_data
 #     'bets': [{'home_team': 'Japan', 'away_team': 'Croatia', 'home_score': '2', 'away_score': '2', 'penalties': 'True'},
 #             {'home_team': 'Korea', 'away_team': 'US', 'home_score': '2', 'away_score': '1', 'penalties': 'False'}]}
 # """
-
 
 def get_scores(bet):
     total_points = 0

@@ -1,6 +1,8 @@
 <html>
+  {% extends "base.html" %}
+  {% block content %}
   <head>
-    <title>World Cup Fixtures</title>
+    <title>Upcoming Fixtures</title>
     <style>
       /* define CSS styles for formatting the table */
       table {
@@ -18,7 +20,9 @@
     </style>
   </head>
   <body>
-    <h1>World Cup Fixtures</h1>
+    <br>
+    <h1>Upcoming Fixtures</h1>
+    <br>
     <form action="{{ url_for('bet') }}" method="POST">
       <table>
         <thead>
@@ -42,5 +46,6 @@
       </table>
     </form>
   </body>
+  {% endblock %}
 </html>
 
