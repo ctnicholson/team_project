@@ -71,6 +71,6 @@ One of the key features of their project was the ability to make predictions abo
 As users started making predictions, they knew that they needed to create a leaderboard to track their performance. So they spent a lot of time developing this feature, testing it to ensure that it worked properly and was user-friendly.
 
 In the end, their hard work and collaboration paid off. They had created a World Cup prediction tool that was robust, user-friendly and a lot of fun to use. As users started using their project, they received a lot of positive feedback and were proud of the work that they had done. It was a great experience and a reminder of the power of collaboration and hard work in the world of software development.
-
+---
 **_EXTERNAL RESOURCES_**
 Navigation bar and registration help: https://medium.com/codex/simple-registration-login-system-with-flask-mongodb-and-bootstrap-8872b16ef915
