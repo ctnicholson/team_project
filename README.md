@@ -23,7 +23,8 @@ Navigate across sections
 ---
 **_IMPLEMENTATION INFORMATION_**
 
-![Flowchart](C:\Users\cnicholson1\Downloads\Flow chart (Community).jam)
+<img width="2026" alt="Flow chart (Community) (3)" src="https://user-images.githubusercontent.com/112514394/206072014-59e0dd9d-be3d-43b2-b378-ba61379078a3.png">
+
 Now, we are sure you are wondering, what is under the hood of the World Cup prediction game. How does the code really work?
 
 
