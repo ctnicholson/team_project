@@ -6,7 +6,7 @@ One day, Zhi Li learns about our World Cup prediction game and decides to give i
 
 ![Prediction](https://media.tenor.com/f0lrUDqGWkYAAAAM/the-smurfs-brainy-smurf.gif)
 
-Eventually, the World Cup reaches the final stage and he is in 2nd place, incredibly close to the first place position. He is on the edge of his seat as he watches the final match, and his predictions are on the line. He can hardly believe it when his team wins the championship, and is thrilled to see that he has come out on top of the leaderboard in his league with friends and family. 
+Eventually, the World Cup reaches the final stage and he is in 2nd place, incredibly close to the first place position. He is on the edge of his seat as he watches the final match, and his predictions are on the line. He has bet that Portugall will beat Argentina 2-1, and first place in the league has bet 2-1 for Argentina. In the 92nd minute of the match, Portugal get a penalty... Bruno Fernandes crosses in the goal... Ronaldo jumps in the air and heads the goal to the back of the next. GOAAAALLLLLL!!! Portugal have won the World Cup and Zhi Li has won his prediction league, and has won bragging rights for the next 4 years in his friend group. He can hardly believe it , and is thrilled to see that he has come out on top of the leaderboard in his league with friends. 
 
 ![Zhi Li celebrating win](https://media.tenor.com/HAGXdX-X-1cAAAAM/no1-happy.gif)
 
@@ -14,22 +14,5 @@ Having used
 
 
 
-This is the base repository for our final group project.
 
 Team Members: Maria Herwage, Callum Nicholson, Benjamin Funk
-
-
-# Leaderboard
-
-TO SHOW: 
-
-table (sorted by amount of points):
-    username, amount of points 
-
-TO CALCULATE:
-
-each user's score as a function of the difference between the predicted score and actual score
-
-# TODO
-change bet to append to a default []
-    logic: create empty list, append
