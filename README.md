@@ -44,7 +44,7 @@ Well here is a diagram to help with our explanation
 * Once this data is pulled, it is processed under the data_reader file. This file cleans the data, and returns teams & scores (scores returned as None for games not played yet) of games not played yet
 * Then bet.html loads this information into the table, and gives the user the ability to bet on the game
 * Through app.py and registration.html, the user is able to register or login
-* The user registers and uses the form to store username and password, which is then encrypted
+* The user registers and uses the form to store username and password, which is then encrypted and stored in MongoDB
 * Once the user logs in, this automatically loads the bets page (bet.html)
 * From bet.html we go to the choose_bet.html which takes in the core predictions 
 * These user bets are then appended to MongoDB
