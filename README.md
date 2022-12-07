@@ -13,19 +13,21 @@ Eventually, the World Cup reaches the final stage and he is in 2nd place, incred
 ![Zhi Li celebrating win](https://media.tenor.com/HAGXdX-X-1cAAAAM/no1-happy.gif)
 
 ---
+**_INSTRUCTIONS_**
 Here is a quick run through on how you can use our game:
 Click link
 
 Navigate across sections
 
 ---
+**_IMPLEMENTATION INFORMATION_**
 Now, we are sure you are wondering, what is under the hood of the World Cup prediction game. How does the code really work?
 
 
 
 
 ---
-PROJECT EVOLUTION
+**_PROJECT EVOLUTION_**
 
 As the World Cup began, three ambitious software developers - Benji, Maria and Callum - set out on a mission to create the ultimate World Cup prediction game.
 
