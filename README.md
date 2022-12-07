@@ -1,4 +1,6 @@
-Team Members: Maria Herwage, Callum Nicholson, Benjamin Funk
+**Team Members: Maria Herwage, Callum Nicholson, Benjamin Funk**
+
+**_Why did we do this?_**
 
 Meet Zhi Li, a die-hard soccer fan who is excited for the upcoming World Cup. He loves watching the games and cheering for his favorite team, but he also enjoys the competition and strategic thinking involved in making decisions, and feels there is not a great platform currently out there to do so.
 
@@ -16,21 +18,21 @@ Eventually, the World Cup reaches the final stage and he is in 2nd place, incred
 **_INSTRUCTIONS_**
 
 Here is a quick run through on how you can use our game:
-Click link
+':globe_with_meridians:' Click link
+':mag_right:' Navigate across sections
 
-Navigate across sections
 
 ---
 **_IMPLEMENTATION INFORMATION_**
 
-Now, we are sure you are wondering, what is under the hood of the World Cup prediction game. How does the code really work?
+Now, we are sure you are wondering, what is under the hood of the World Cup prediction game, and how does the code really work?
 
-Here is a diagram to help with our explanation
+Well here is a diagram to help with our explanation
 
 <img width="2026" alt="Flow chart (Community) (4)" src="https://user-images.githubusercontent.com/112514394/206074976-f4bb6a9d-6c8b-4513-8c72-eb948f7de8eb.png">
 
-* First we pull the data from our World Cup API (api-sports.io)
-* Once this data is pulled, it is processed under the data_reader file. This file cleans the data, and returns teams & scores (None) of games not played yet
+* The first step our code performs is pulling the data from our World Cup API (api-sports.io)
+* Once this data is pulled, it is processed under the data_reader file. This file cleans the data, and returns teams & scores (scores returned as None for games not played yet) of games not played yet
 * Then bet.html loads this information into the table, and gives the user the ability to bet on the game
 * Through app.py and registration.html, the user is able to register or login
 * The user registers and uses the form to store username and password, which is then encrypted
